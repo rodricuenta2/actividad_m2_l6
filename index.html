@@ -1,18 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-<ul>
-  <li>Primer elemento</li>
-  <li>Segundo elemento</li>
-  <li>Tercer elemento</li>
-</ul>
+<html lang="es">
 
-<script src="https://code.jquery.com/jquery-4.0.0.slim.min.js" integrity="sha256-8DGpv13HIm+5iDNWw1XqxgFB4mj+yOKFNb+tHBZOowc=" crossorigin="anonymous"></script>
+<head>
+  <meta charset="UTF-8">
+  <title>Manipulación de Lista con jQuery</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Mi Lista Dinámica</h2>
+
+  <ul id="miLista">
+    <li>Elemento 1</li>
+    <li>Elemento 2</li>
+    <li>Elemento 3</li>
+  </ul>
+
+  <button id="btnToggle">Ocultar Lista</button>
+
+  <script>
+    $(document).ready(function () {
+      // 1. Cambiar el color de texto de los elementos <li> a azul
+      $("#miLista li").css("color", "blue");
+
+      // 2. Agregar dinámicamente un cuarto elemento
+      $("#miLista").append("<li>Elemento 4 (Dinámico)</li>");
+
+      // Aplicar color azul también al nuevo elemento
+      $("#miLista li:last").css("color", "blue");
+
+      // 3. Lógica del botón para ocultar/mostrar
+      $("#btnToggle").click(function () {
+        // toggle() alterna la visibilidad de la lista
+        $("#miLista").toggle();
+
+        // Cambiar el texto del botón según la visibilidad de la lista
+        if ($("#miLista").is(":visible")) {
+          $(this).text("Ocultar Lista");
+        } else {
+          $(this).text("Mostrar Lista");
+        }
+      });
+    });
+  </script>
+  <script src="https://code.jquery.com/jquery-4.0.0.slim.min.js"
+    integrity="sha256-8DGpv13HIm+5iDNWw1XqxgFB4mj+yOKFNb+tHBZOowc=" crossorigin="anonymous"></script>
 </body>
+
 </html>
